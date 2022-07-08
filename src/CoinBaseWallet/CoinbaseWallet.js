@@ -6,10 +6,10 @@ import { ethers } from 'ethers';
 import './CoinbaseWallet.css'
 
 const CoinBaseWalletConnect = () => {
-    const [provider, setProvider] = useState();
-    const [library, setLibrary] = useState();
+    // const [provider, setProvider] = useState();
+    // const [library, setLibrary] = useState();
     const [account, setAccount] = useState();
-    const [network, setNetwork] = useState();
+    // const [network, setNetwork] = useState();
     const [signature , setSignature] = useState();
 
     const providerOptions = {
@@ -38,16 +38,16 @@ const CoinBaseWalletConnect = () => {
             const provider = await web3Model.connect();
             const library = new ethers.providers.Web3Provider(provider)
             const accounts = await library.listAccounts();
-            const network = await library.getNetwork();
+            // const network = await library.getNetwork();
             const signature = await library.provider.request({
                 method: 'personal_sign',
                 params: ['Are you want connect this site', accounts[0]]
             })
             setSignature(signature)
-            setProvider(provider);
-            setLibrary(library);
+            // setProvider(provider);
+            // setLibrary(library);
             setAccount(accounts[0])
-            setNetwork(network)
+            // setNetwork(network)
 
         } catch (error) {
             console.error(error);
